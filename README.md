@@ -3,8 +3,7 @@
 ## Features
 - 🛡️ Admin: CRUD tickets
 - 👨‍💻 Agents: Fetch & manage assigned tickets (max 15)
-- ⚡ Concurrency-safe assignment
-- 📊 Status tracking: Open → Assigned → In Progress → Resolved → Closed
+- 📊 Status tracking: Open → Assigned → Resolved → Closed
 
 ## API Endpoints
 | Method | Endpoint                | Role   | Description                     |
