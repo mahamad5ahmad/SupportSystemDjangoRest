@@ -1,5 +1,22 @@
 # Support Ticket System API
 
+> ⚠️ **Note on Asynchronous Support**
+
+This project is currently built using **standard synchronous Django views and configuration**. As such, API requests are handled synchronously by default, which is sufficient for many use cases but may not scale optimally for high-concurrency scenarios.
+
+To enable full **asynchronous (non-blocking) request handling**, the following changes are required:
+
+1. **Run Django using an ASGI server**, such as `uvicorn` or `daphne`, instead of the default WSGI server.
+2. **Convert views to asynchronous views**, using `async def` along with DRF's `APIView` or compatible async-compatible classes.
+3. **Use `async`-compatible database drivers and ORM layers** (e.g., `databases` or `Tortoise ORM` if not using Django ORM).
+4. **Write asynchronous tests** using libraries like `pytest-asyncio` or `httpx` instead of Django's default test client.
+5. **Ensure middleware and third-party packages are compatible** with async execution.
+
+This shift to an async stack allows for better performance under heavy I/O loads (e.g., external APIs, file operations), but requires careful consideration and proper async design patterns throughout the application.
+
+For now, the application is fully functional in a synchronous context.
+
+
 ## Features
 - 🛡️ Admin: CRUD tickets
 - 👨‍💻 Agents: Fetch & manage assigned tickets (max 15)
